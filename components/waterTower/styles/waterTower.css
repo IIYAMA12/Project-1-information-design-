@@ -1,0 +1,74 @@
+.cls-1, .cls-12, .cls-3, .cls-4 {
+    fill: none;
+}
+
+.cls-2 {
+    fill: #fff;
+}
+
+.cls-3, .cls-4 {
+    stroke: #fff;
+}
+
+.cls-12, .cls-3, .cls-4 {
+    stroke-miterlimit: 10;
+}
+
+.cls-3 {
+    stroke-width: 17px;
+}
+
+.cls-4 {
+    stroke-width: 45px;
+}
+
+.cls-5 {
+    clip-path: url(#clip-path);
+}
+
+.cls-6 {
+    fill: #55d911;
+}
+
+.cls-7 {
+    fill: #0080ff;
+}
+
+.fluoride-water-color {
+    fill: #55d911;
+}
+
+.water-color {
+    fill: #0080ff;
+}
+
+.cls-8 {
+    fill: #ccc;
+}
+
+.cls-9 {
+    fill: #041b51;
+}
+
+.cls-10 {
+    fill: #a80030;
+}
+
+.cls-11 {
+    fill: #fdfdfd;
+}
+
+.cls-12 {
+    stroke: #000;
+    stroke-linecap: round;
+    stroke-width: 4px;
+}
+
+html {
+    height: 100vh;
+    overflow: hidden;
+}
+
+html body {
+    margin: 0;
+}

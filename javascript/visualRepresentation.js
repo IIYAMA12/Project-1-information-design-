@@ -1,0 +1,115 @@
+function createFilters (fileData) {
+    var footer = d3.select("#first-content-section > footer");
+    if (footer != undefined) {
+        var section = footer.select("section:nth-child(" + 1 + ")");
+        if (section != undefined) {
+
+            section.html(""); // Remove the filters. No need to animate the recreation
+
+            var filterData = fileData.filterData;
+            if (filterData != undefined) {
+
+                section.append("h3")
+                    .text("Filter");
+
+                for (var i = 0; i < filterData.length; i++) {
+                    var formElement = section.append("form");
+
+                    var filter = filterData[i];
+                    var variants = filter.variantsFound;
+                    if (variants != undefined) {
+
+                        // make groups
+                        var groups = formElement
+                            .selectAll("span")
+                                .data(variants)
+                                    .enter()
+                                        .append("span");
+
+                        // put the filter inputs and labels in it.
+                        var inputs = groups
+                            .append("input")
+                                .attr("id", function(d) {
+                                    return fileData.id + "-|-" + i + "-|-" + d;
+                                })
+                                .attr("type", "radio")
+                                .attr("name", "filter")
+                                .attr("value", function(d) {
+                                    return  i + "-|-" + d.getTime(); // side-filterId-filterData
+                                })
+                                // this should set only one radio button selected, but it isn't working.
+                                .property('checked', function (d) {
+                                    return d === filter.defaultValue ? true : false;
+                                })
+                                // I love filtering...
+                                .on("change", applyFilter);
+
+
+                        var labels = groups
+                                .append("label")
+                                    .attr("for", function(d) {
+                                        return fileData.id + "-|-" + i + "-|-" + d;
+                                    })
+                                    .attr("type", "radio")
+                                    // .attr("value", function(d) {
+                                    //     return d;
+                                    // })
+                                    .text(function(d) {
+                                        return d.getFullYear();
+                                    });
+
+                        // check the right selected filter after refreshing the filters.
+                        inputs
+                            .property('checked', function (d) {
+                                return d === filter.defaultValue ? true : false;
+                            });
+
+                    }
+                }
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+
+function applyFilter () {
+
+    // get the data from the input element
+    var filterDataString = this.value;
+    if (filterDataString != undefined) {
+        console.log("filterDataString");
+        // make the data readable
+        var filterDataArray = filterDataString.split("-|-");
+        if (filterDataArray != undefined && filterDataArray.length === 2) {
+            var filterId = Number(filterDataArray[0]);
+            var data = Number(filterDataArray[1]);
+            console.log("filterDataArray");
+            // validate
+            if (filterId != undefined && data != undefined && data != "") {
+                console.log("validate");
+                // try to access the data with the given information.
+                var fileData = getDataOfFileById("fluorideWater");
+                if (fileData) {
+
+                    // now get the filter
+                    var filterData = fileData.filterData;
+                    if (filterData != undefined) {
+                        var filter = filterData[filterId];
+                        if (filter != undefined) {
+
+                            // update the filter
+                            filter.defaultValue = new Date(data);
+
+                            // reload/update the graph
+                            callDataRequestersBack (fileData);
+
+                            console.log("please update the data here");
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Project 1</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./styles/reset.css">
+        <link rel="stylesheet" href="./styles/index.css">
+        <link rel="stylesheet" href="./styles/globalStyle.css">
+
+    </head>
+
+    <!-- Load before the content -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script type="text/javascript" src="./javascript/utility.js"></script>
+    <script type="text/javascript" src="./javascript/fileData.js"></script>
+    <script type="text/javascript" src="./javascript/fileDataFunctions.js"></script>
+    <!--  -->
+
+    <body>
+        <header>
+            <h1></h1>
+        </header>
+        <main>
+            <section id="first-content-section" class="main-section air-background">
+                <object class="section-filled" type="text/html" data="./components/waterTower/waterTower.html"></object>
+                <object class="section-filled" type="text/html" data="./components/map/map.html"></object>
+                <footer>
+                    <section>
+
+                    </section>
+                </footer>
+            </section>
+            <section class="main-section">
+
+            </section>
+        </main>
+        <footer>
+
+        </footer>
+    </body>
+
+    <!-- Load after the content -->
+    <script type="text/javascript" src="./javascript/visualRepresentation.js"></script> <!-- Used to generate elements that are not directly linked with the components -->
+    <script type="text/javascript" src="./javascript/index.js"></script> <!-- start loading the datasets -->
+    <!--  -->
+</html>

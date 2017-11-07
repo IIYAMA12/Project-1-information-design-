@@ -1,0 +1,8 @@
+.cls-1 {
+    stroke: #fff;
+    stroke-width: 0.75px;
+}
+
+#map-hover-info {
+    pointer-events: none;
+}
