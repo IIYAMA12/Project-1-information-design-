@@ -79,6 +79,7 @@ window.onload = function () {
         .append("text")
             .attr("transform", function(d) { return "translate(" + labelPosition.centroid(d) + ")"; })
             .attr("dy", "1em")
+            .attr("font-size", 20)
             .text("");
 
 
