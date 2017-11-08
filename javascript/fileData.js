@@ -43,13 +43,22 @@ var allFileData = [
             }
         */
             {
+                id : "year",
                 filterOn : "year", // column
                 friendlyName : "Year", // title name
                 filterFunction : function (d) { // how do you want to filter it?
                     return d[this.filterOn].getTime() === this.defaultValue.getTime(); // default
-
                 },
-            }
+            },
+            {
+                id : "percent",
+                filterOn : "datavaluetype", // column
+                friendlyName : "Percent", // title name
+                filterFunction : function (d) { // how do you want to filter it?
+                    return d[this.filterOn] === "Percent"; // default
+                },
+                doNotAddToFilterSelection : true
+            },
         ],
 
         timeParseFormats : {
@@ -129,12 +138,23 @@ var allFileData = [
 
                 allData = allData.filter(function (d) {
                     // Add only the right data
-                    if (d.datavaluetype === "Percent" && d.locationabbr !== "US") {
+                    if (d.locationabbr !== "US") {
                         return true;
                     }
 
                 });
 
+
+
+                // var yearsData = filterFileData (fileData, ["year"]);
+
+                var yearsData = allData.filter(function (d) {
+                    // Add only the right data
+                    if (d.datavaluetype === "Percent") {
+                        return true;
+                    }
+
+                });
 
 
                 // add here your edit functions
@@ -143,7 +163,7 @@ var allFileData = [
 
                 var yearsNested = d3.nest()
                     .key(function(d) { return d.year; })
-                    .entries(allData);
+                    .entries(yearsData);
 
                 for (var i = 0; i < yearsNested.length; i++) {
                     var yearData = yearsNested[i];

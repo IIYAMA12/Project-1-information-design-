@@ -7,7 +7,7 @@ var parseTimeHourMinute = d3.timeParse("%H:%M");
 function prepareData (fileData) {
     var allData = fileData.allData;
     if (allData == undefined) {
-        console.log("allData is nil of ID", fileData.id);
+        console.log("allData is nil for ID", fileData.id);
     } else {
         // these columns must contain values
         var mustBeFilledIn = fileData.mustBeFilledIn != undefined ? fileData.mustBeFilledIn : [];
@@ -214,13 +214,37 @@ function removeDataWithCondition (allData, conditions) {
     );
 */
 
-function filterFileData (fileData) {
+function findFilterById (fileData, id) {
+    var filterData = fileData.filterData;
+    for (var i = 0; i < filterData.length; i++) {
+        if (filterData[i].id === id) {
+            return filterData[i];
+        }
+    }
+    return false;
+}
+
+function filterFileData (fileData, filters) {
     var filterData = fileData.filterData;
     var allData = fileData.allData;
     if (allData != undefined) {
         if (filterData) {
-            for (var i = 0; i < filterData.length; i++) {
-                allData = allData.filter(filterData[i].filterFunction, filterData[i]);
+            if (filters == undefined) {
+                for (var i = 0; i < filterData.length; i++) {
+                    var theFilter = filterData[i];
+                    if (!theFilter.filterOnlyOnRequest) {
+                        allData = allData.filter(theFilter.filterFunction, theFilter);
+                    }
+                }
+            } else {
+                for (var i = 0; i < filters.length; i++) {
+                    var theFilter = findFilterById(fileData, filters[i]);
+                    if (theFilter) {
+                        allData = allData.filter(theFilter.filterFunction, theFilter);
+                    } else {
+                        console.log("can't find filter under id", filters[i]);
+                    }
+                }
             }
         }
         return allData;
@@ -267,7 +291,6 @@ function getDataFunctions (id, callBackFunction) {
 
 
 function setCallBackWhenDataIsReadyForId (id, callBackFunction) {
-    console.log("setCallBackWhenDataIsReadyForId", id, callBackFunction);
     var fileData = getDataOfFileById (id);
     if (fileData) {
         if (fileData.dataRequesters == undefined) {
@@ -280,7 +303,6 @@ function setCallBackWhenDataIsReadyForId (id, callBackFunction) {
 
 
 function callDataRequestersBack (fileData) {
-    console.log("callDataRequestersBack", fileData);
     // Add the ref to the html, to load this data.
     var dataRequesters = fileData.dataRequesters;
     for (var i = 0; i < dataRequesters.length; i++) {

@@ -9,15 +9,22 @@ function createFilters (fileData) {
             var filterData = fileData.filterData;
             if (filterData != undefined) {
 
-                section.append("h3")
-                    .text("Filter");
+                // section.append("h3")
+                //     .text("filters");
 
                 for (var i = 0; i < filterData.length; i++) {
-                    var formElement = section.append("form");
+
 
                     var filter = filterData[i];
                     var variants = filter.variantsFound;
-                    if (variants != undefined) {
+                    if (variants != undefined && !filter.doNotAddToFilterSelection) {
+
+                        var formElement = section.append("form");
+
+                        if (filter.friendlyName != undefined && filter.friendlyName != "") {
+                            formElement.append("legend")
+                                .text(filter.friendlyName);
+                        }
 
                         // make groups
                         var groups = formElement
