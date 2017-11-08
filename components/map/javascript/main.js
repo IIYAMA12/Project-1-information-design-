@@ -244,11 +244,6 @@ window.onload = function () {
                 // return false;
             }) // https://github.com/d3/d3-selection#selection_data)
             .attr("fill", function (d) {
-                if (d.datavalue == undefined) {
-                    console.log("error");
-                } else {
-                    console.log(d.datavalue, d);
-                }
                 return colorRange(d.datavalue);
             });
 

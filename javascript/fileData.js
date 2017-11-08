@@ -87,11 +87,13 @@ var allFileData = [
 
             for (i = 0; i < processes.length; i++) {
                 allData = processes[i](this, allData);
+                this.allData = allData;
                 if (allData == undefined || !allData || typeof(allData) == "string" || typeof(allData) == "number") {
                     oneProcessFailed = true;
                     break;
                 }
             }
+
 
 
 
@@ -127,16 +129,13 @@ var allFileData = [
 
                 allData = allData.filter(function (d) {
                     // Add only the right data
-                    if (d.locationabbr !== "US") {
-
-                    } else {
-                        console.log(d.locationabbr);
-                    }
                     if (d.datavaluetype === "Percent" && d.locationabbr !== "US") {
                         return true;
                     }
 
                 });
+
+
 
                 // add here your edit functions
                 fileData.customData.percentPerYear = {};
