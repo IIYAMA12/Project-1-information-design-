@@ -154,8 +154,8 @@ window.onload = function () {
                         ;
 
                         var calculatedPath = d3.arc() // lets create our calculated paths. (this is not an html element!)
-                            .outerRadius(circleSize / 2 * 0.8 - 10)
-                            .innerRadius(0)
+                            .outerRadius(circleSize / 2 * 0.8)
+                            .innerRadius(circleSize / 2 * 0.1)
                         ;
 
                         // get the value. datavalue == column. So no camelCase
