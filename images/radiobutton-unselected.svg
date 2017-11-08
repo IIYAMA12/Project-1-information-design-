@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.29 110.08">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-1 {
+        stroke: gray;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <title>radiobutton-unselected</title>
+  <g id="Laag_2" data-name="Laag 2">
+    <g id="Laag_1-2" data-name="Laag 1">
+      <g>
+        <path class="cls-1" d="M20.15,16c1.5,0,2.51,13.27,10.44,21.32,5.58,5.66,7.66,12.4,7.66,16.4A18.11,18.11,0,0,1,2,53.74c0-4,2.09-10.74,7.67-16.4C17.63,29.29,18.64,16,20.15,16Z"/>
+        <rect class="cls-2" width="40.29" height="110.08"/>
+      </g>
+    </g>
+  </g>
+</svg>

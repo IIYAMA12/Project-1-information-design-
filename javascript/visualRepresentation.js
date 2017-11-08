@@ -1,80 +1,80 @@
 function createFilters (fileData) {
     var footer = d3.select("#first-content-section > footer");
     if (footer != undefined) {
-        var section = footer.select("section:nth-child(" + 1 + ")");
-        if (section != undefined) {
+        footer.html(""); // Remove the filters. No need to animate the recreation
 
-            section.html(""); // Remove the filters. No need to animate the recreation
+        var filterData = fileData.filterData;
+        if (filterData != undefined) {
 
-            var filterData = fileData.filterData;
-            if (filterData != undefined) {
+            // footer.append("h3")
+            //     .text("filters");
 
-                // section.append("h3")
-                //     .text("filters");
-
-                for (var i = 0; i < filterData.length; i++) {
+            for (var i = 0; i < filterData.length; i++) {
 
 
-                    var filter = filterData[i];
-                    var variants = filter.variantsFound;
-                    if (variants != undefined && !filter.doNotAddToFilterSelection) {
+                var filter = filterData[i];
+                var variants = filter.variantsFound;
+                if (variants != undefined && !filter.doNotAddToFilterSelection) {
 
-                        var formElement = section.append("form");
+                    var formElement = footer.append("form");
 
-                        if (filter.friendlyName != undefined && filter.friendlyName != "") {
-                            formElement.append("legend")
-                                .text(filter.friendlyName);
-                        }
+                    if (filter.friendlyName != undefined && filter.friendlyName != "") {
+                        formElement.append("legend")
+                            .text(filter.friendlyName);
+                    }
 
-                        // make groups
-                        var groups = formElement
-                            .selectAll("span")
-                                .data(variants)
-                                    .enter()
-                                        .append("span");
+                    var fieldset = formElement
+                        .append("fieldset")
+                    ;
 
-                        // put the filter inputs and labels in it.
-                        var inputs = groups
-                            .append("input")
-                                .attr("id", function(d) {
+                    // make groups
+                    var groups = fieldset
+                        .selectAll("span")
+                            .data(variants)
+                                .enter()
+                                    .append("span");
+
+                    // put the filter inputs and labels in it.
+                    var inputs = groups
+                        .append("input")
+                            .attr("id", function(d) {
+                                return fileData.id + "-|-" + i + "-|-" + d;
+                            })
+                            .attr("type", "radio")
+                            .attr("name", "filter")
+                            .attr("value", function(d) {
+                                return  i + "-|-" + d.getTime(); // side-filterId-filterData
+                            })
+                            // this should set only one radio button selected, but it isn't working.
+                            .property('checked', function (d) {
+                                return d === filter.defaultValue ? true : false;
+                            })
+                            // I love filtering...
+                            .on("change", applyFilter);
+
+
+                    var labels = groups
+                            .append("label")
+                                .attr("for", function(d) {
                                     return fileData.id + "-|-" + i + "-|-" + d;
                                 })
                                 .attr("type", "radio")
-                                .attr("name", "filter")
-                                .attr("value", function(d) {
-                                    return  i + "-|-" + d.getTime(); // side-filterId-filterData
-                                })
-                                // this should set only one radio button selected, but it isn't working.
-                                .property('checked', function (d) {
-                                    return d === filter.defaultValue ? true : false;
-                                })
-                                // I love filtering...
-                                .on("change", applyFilter);
+                                // .attr("value", function(d) {
+                                //     return d;
+                                // })
+                                .text(function(d) {
+                                    return d.getFullYear();
+                                });
 
+                    // check the right selected filter after refreshing the filters.
+                    inputs
+                        .property('checked', function (d) {
+                            return d === filter.defaultValue ? true : false;
+                        });
 
-                        var labels = groups
-                                .append("label")
-                                    .attr("for", function(d) {
-                                        return fileData.id + "-|-" + i + "-|-" + d;
-                                    })
-                                    .attr("type", "radio")
-                                    // .attr("value", function(d) {
-                                    //     return d;
-                                    // })
-                                    .text(function(d) {
-                                        return d.getFullYear();
-                                    });
-
-                        // check the right selected filter after refreshing the filters.
-                        inputs
-                            .property('checked', function (d) {
-                                return d === filter.defaultValue ? true : false;
-                            });
-
-                    }
                 }
-                return true;
             }
+            return true;
         }
     }
     return false;

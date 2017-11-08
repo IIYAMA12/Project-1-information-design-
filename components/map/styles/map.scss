@@ -14,3 +14,16 @@
     // -webkit-transition: all $duration; /* Safari */
     // transition: all $duration;
 }
+
+body {
+    padding: 15vw 15vw 15vw 0;
+}
+
+
+* { // fixing a strange scroll effect on one of the events
+    overflow: hidden;
+}
+
+svg {
+    max-height: 61vh;
+}

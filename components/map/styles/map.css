@@ -6,3 +6,15 @@
 #map-hover-info {
     pointer-events: none;
 }
+
+body {
+    padding: 15vw 15vw 15vw 0;
+}
+
+* {
+    overflow: hidden;
+}
+
+svg {
+    max-height: 61vh;
+}
