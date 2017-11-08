@@ -132,7 +132,8 @@ window.onload = function () {
                             y = elementBoxData.y
                         ;
 
-                        var circleSize = Math.max(width, height) * 0.8; // 80% of the maximal size
+                        var circleSize = Math.min(width, height) * 0.8; // 80% of the minimal size
+
 
                         var centerX = x + width / 2,
                             centerY = y + height / 2
@@ -171,6 +172,7 @@ window.onload = function () {
                         arc.select("path")
                             // .attr("d", 0)
                             .transition(transitionCircleDiagram)
+                                .attr("opacity", 1)
                                 .attr("d", calculatedPath)
                                 .attr("fill",
                                     function(d, i) {
@@ -188,7 +190,10 @@ window.onload = function () {
                             .attr("text-anchor", "middle")
                             .text(function(d) {
                                 return Math.floor(d.data + 0.5) + "%"; // Math.floor + 0.5 = same as Math.round
-                            });
+                            })
+                            .transition(transitionCircleDiagram)
+                                .attr("opacity", 1)
+                        ;
 
                     }
                 }
@@ -206,6 +211,31 @@ window.onload = function () {
 
     mapElements
         .on("mouseout", function () {
+            var transitionCircleDiagram = d3.transition().duration(400).ease(d3.easeLinear);
+            mapHoverInformation
+                .select("circle")
+                .transition(transitionCircleDiagram)
+                    .attr("r", 0)
+            ;
+
+            var arc = mapHoverInformation.selectAll(".arc");
+
+            var calculatedPath = d3.arc() // lets create our calculated paths. (this is not an html element!)
+                .outerRadius(2)
+                .innerRadius(1)
+            ;
+
+            arc.select("path")
+                // .attr("d", 0)
+                .transition(transitionCircleDiagram)
+                    .attr("d", calculatedPath)
+                    .attr("opacity", 0)
+            ;
+
+            arc.select("text")
+                .transition(transitionCircleDiagram)
+                    .attr("opacity", 0)
+            ;
 
         })
 
