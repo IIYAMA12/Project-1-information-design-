@@ -23,16 +23,17 @@ var y = d3.scaleLinear().rangeRound([919, 0]);
 y.domain([0, 100]);
 
 
-watertowerSVG.append("text")
-    .attr("x", "284.02")
-    .attr("y", "-100")
-    .attr("fill", "white")
-    .attr("text-anchor", "middle")
-    .text("Populatie voorzien van fluoride water")
-;
+// no title as svg, but in html
+// watertowerSVG.append("text")
+//     .attr("x", "284.02")
+//     .attr("y", "-100")
+//     .attr("fill", "white")
+//     .attr("text-anchor", "middle")
+//     .text("Populatie voorzien van fluoride water")
+// ;
 
 var axis = watertowerSVG.append("g")
-    .attr("transform", "translate(" + 470 + "," + 188.80999999999995 + ")") // 540
+    .attr("transform", "translate(" + 540 + "," + 188.80999999999995 + ")") // 540
     .attr("class", "axis axis-y")
     .attr("fill", "#ffffff")
     .call(d3.axisRight(y)
@@ -41,6 +42,7 @@ var axis = watertowerSVG.append("g")
                 return d + "%";
             })
         );
+
 axis.selectAll("line")
     .attr("stroke-width", 4)
     .attr("stroke", "white");
@@ -50,7 +52,7 @@ axis.selectAll("path")
     .attr("stroke", "white");
 
 axis.selectAll("text")
-    .attr("font-size", 20)
+    .attr("font-size", 35)
     .attr("fill", "white");
 
 
