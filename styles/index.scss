@@ -1,6 +1,6 @@
 object.section-filled {
     height: 100vh;
-    padding: 6rem 3rem 0 3rem;
+    // padding: 6rem 3rem 0 3rem;
 }
 
 
@@ -17,14 +17,22 @@ object.section-filled {
 }
 
 #first-content-section {
-    display: flex;
-    > object {
-        display: block;
-        &:nth-child(1) {
-            width: 20%;
-        }
-        &:nth-child(2) {
-            width: 80%;
+    > div {
+        display: flex;
+        object {
+            display: block;
+
+            &:nth-child(1) {
+                // width: 40%;
+                flex-grow: 1;
+                flex-shrink: 0.8;
+
+            }
+            &:nth-child(2) {
+                // width: 60%;
+                flex-grow: 6;
+                flex-shrink: 5;
+            }
         }
     }
 }

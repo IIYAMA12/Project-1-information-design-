@@ -68,12 +68,21 @@
 html {
     height: 100vh;
     overflow: hidden;
+    position: relative;
     body {
-        // display: flex;
+        position: absolute;
+        bottom: 0;
         main {
-            // align-items: flex-end;
+            section {
+                svg {
+                    display: block; // remove the extra space below the svg.
+                    max-height: 100vh;
+                }
+                margin: 0 3rem;
+            }
         }
         // margin: 3rem 3rem 0 3rem;
         margin: 0;
     }
+
 }

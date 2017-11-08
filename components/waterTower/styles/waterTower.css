@@ -67,8 +67,20 @@
 html {
     height: 100vh;
     overflow: hidden;
+    position: relative;
 }
 
 html body {
+    position: absolute;
+    bottom: 0;
     margin: 0;
+}
+
+html body main section {
+    margin: 0 3rem;
+}
+
+html body main section svg {
+    display: block;
+    max-height: 100vh;
 }

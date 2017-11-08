@@ -10,21 +10,24 @@
 
     </head>
 
-    <!-- Load before the content -->
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script type="text/javascript" src="./javascript/utility.js"></script>
-    <script type="text/javascript" src="./javascript/fileData.js"></script>
-    <script type="text/javascript" src="./javascript/fileDataFunctions.js"></script>
-    <!--  -->
+
 
     <body>
+        <!-- Load before the content -->
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script type="text/javascript" src="./javascript/utility.js"></script>
+        <script type="text/javascript" src="./javascript/fileData.js"></script>
+        <script type="text/javascript" src="./javascript/fileDataFunctions.js"></script>
+        <!--  -->
         <header>
             <h1></h1>
         </header>
         <main>
             <section id="first-content-section" class="main-section air-background">
-                <object class="section-filled" type="text/html" data="./components/waterTower/waterTower.html"></object>
-                <object class="section-filled" type="text/html" data="./components/map/map.html"></object>
+                <div><!-- used for flexbox -->
+                    <object class="section-filled" type="text/html" data="./components/waterTower/waterTower.html"></object>
+                    <object class="section-filled" type="text/html" data="./components/map/map.html"></object>
+                </div>
                 <footer>
                     <section>
 
@@ -38,10 +41,9 @@
         <footer>
 
         </footer>
+        <!-- Load after the content -->
+        <script type="text/javascript" src="./javascript/visualRepresentation.js"></script> <!-- Used to generate elements that are not directly linked with the components -->
+        <script type="text/javascript" src="./javascript/index.js"></script> <!-- start loading the datasets -->
+        <!--  -->
     </body>
-
-    <!-- Load after the content -->
-    <script type="text/javascript" src="./javascript/visualRepresentation.js"></script> <!-- Used to generate elements that are not directly linked with the components -->
-    <script type="text/javascript" src="./javascript/index.js"></script> <!-- start loading the datasets -->
-    <!--  -->
 </html>

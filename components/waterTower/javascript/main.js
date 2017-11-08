@@ -25,7 +25,7 @@ y.domain([0, 100]);
 
 watertowerSVG.append("text")
     .attr("x", "284.02")
-    .attr("y", "150")
+    .attr("y", "-100")
     .attr("fill", "white")
     .attr("text-anchor", "middle")
     .text("Populatie voorzien van fluoride water")
