@@ -69,17 +69,18 @@ window.onload = function () {
             )
     ;
 
+
+    // prapare label
     var labelPosition = d3.arc()
         .outerRadius(pieRadius + 100)
         .innerRadius(pieRadius + 100);
-
-
 
     arcWithEnter
         .append("text")
             .attr("transform", function(d) { return "translate(" + labelPosition.centroid(d) + ")"; })
             .attr("dy", "1em")
             .attr("font-size", 20)
+            .attr("fill", "black")
             .text("");
 
 
@@ -133,7 +134,7 @@ window.onload = function () {
                             y = elementBoxData.y
                         ;
 
-                        var circleSize = Math.min(width, height) * 0.8; // 80% of the minimal size
+                        var circleSize = 80;//Math.min(width, height) * 0.8; // 80% of the minimal size
 
 
                         var centerX = x + width / 2,
@@ -155,7 +156,7 @@ window.onload = function () {
 
                         var calculatedPath = d3.arc() // lets create our calculated paths. (this is not an html element!)
                             .outerRadius(circleSize / 2 * 0.8)
-                            .innerRadius(circleSize / 2 * 0.1)
+                            .innerRadius(circleSize / 2 * 0.2)
                         ;
 
                         // get the value. datavalue == column. So no camelCase
@@ -166,8 +167,8 @@ window.onload = function () {
                             .data(deliciousPie([dataValue, 100 - dataValue]));
 
                         var labelPosition = d3.arc()
-                            .outerRadius(circleSize / 2)
-                            .innerRadius(circleSize / 2);
+                            .outerRadius(circleSize / 2 * 1.4)
+                            .innerRadius(circleSize / 2 * 1.4);
 
                         // update the circle
                         arc.select("path")

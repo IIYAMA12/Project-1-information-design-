@@ -86,6 +86,8 @@ function setWaterTowerContent (value1, value2) {
         var groups = clipMaskD3.selectAll("g")
             .data([percent2, percent1]);
 
+
+
         // split the chain in two > groups and groupsWithEnter
         var groupsWithEnter = groups.enter()
             .append("g");
@@ -100,6 +102,7 @@ function setWaterTowerContent (value1, value2) {
         var bubbles = d3.select("#bubbles");
         bubbles.attr("class", "hidden");
 
+        // make the bars
         groupsWithEnter
             .append("rect")
                 .attr("class", function (d, i){
@@ -125,12 +128,6 @@ function setWaterTowerContent (value1, value2) {
 
 
         groups.select("rect")
-
-            // .attr("height", 0)
-            //
-            // .attr("y", function (d) {
-            //     return 1107.81 - offsetTotalY;
-            // })
             .transition(fluorideAndWaterTransition)
                 .attr("y", function (d) {
                     var offsetY = offsetTotalY + y(d);
@@ -140,6 +137,7 @@ function setWaterTowerContent (value1, value2) {
                 .attr("height", function (d) {
                     return y(d);
                 });
+        //
 
 
         var firstGroup = clipMaskD3.select("g");
@@ -149,22 +147,60 @@ function setWaterTowerContent (value1, value2) {
         groups.select("image")
             .remove();
 
+        groups.select("text")
+            .remove();
+
+
+
         setTimeout(function () {
+
+            var groups = clipMaskD3.selectAll("g")
+                .data([percent1, percent2]);
 
             groups.select("image") // double remove skull, to prevent multiple skulls, while having interaction during an animation.
                 .remove();
+
+            groups.select("text")
+                .remove();
+
+
+
+            console.log("strange");
+
+
+            console.log("add text", groups.data());
 
             var fluorideSkullTransition = d3.transition()
                     .duration(400)
                     .ease(d3.easeLinear);
 
             var imageSize = 100;
+
+            groups
+                .append("text")
+                    .attr("x", function (d, i, allElements) {
+                        var bar = d3.select(allElements[i].parentElement).select("rect");
+                        return Number(bar.attr("x")) + Number(bar.attr("width") / 2);
+                    })
+                    .attr("y", function (d, i, allElements) {
+                        var bar = d3.select(allElements[i].parentElement).select("rect");
+                        return Number(bar.attr("y")) + Number(bar.attr("height") / 2);
+                    })
+                    .attr("fill", "white")
+                    .attr("text-anchor", "middle")
+                    .attr("font-size", 35)
+                    .text(function (d) {
+                        return Math.floor(d + 0.5) + "%";
+                    })
+            ;
+
+
             firstGroup
                 .append("image")
                     .attr("height", imageSize)
                     .attr("width", imageSize)
                     .attr("x", Number(firstGroupRectangle.attr("x")) + Number(firstGroupRectangle.attr("width") / 2) - imageSize / 2)
-                    .attr("y", Number(firstGroupRectangle.attr("y")) + Number(firstGroupRectangle.attr("height") / 2) - imageSize / 2)
+                    .attr("y", Number(firstGroupRectangle.attr("y")) + Number(firstGroupRectangle.attr("height") / 2) - imageSize / 2 - (imageSize + 10))
                     .attr("href", "images/skull.svg")
                     .attr("opacity", 0)
                     .transition(fluorideSkullTransition)
