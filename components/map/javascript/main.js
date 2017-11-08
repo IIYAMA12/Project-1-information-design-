@@ -31,7 +31,9 @@ window.onload = function () {
 
 
     // create an d3 object/function that will process our data and use it to create the piechart.
-    var deliciousPie = d3.pie(); // https://github.com/d3/d3-shape/blob/master/README.md#pie
+    var deliciousPie = d3.pie() // https://github.com/d3/d3-shape/blob/master/README.md#pie
+        .sort(null) // disable sorting, because there only 2 values.
+    ;
         // .value(function(d) {
         //     return d.precent;
         // })
@@ -180,7 +182,7 @@ window.onload = function () {
                         arc.select("text")
                             .attr("transform", function(d) {
                                 var textPosition = labelPosition.centroid(d);
-                                textPosition[1] -= 10; // push the text 10 down
+                                textPosition[1] -= 10; // push the text 10 down = up on screen
                                 return "translate(" + textPosition + ")";
                             })
                             .attr("text-anchor", "middle")
@@ -242,6 +244,11 @@ window.onload = function () {
                 // return false;
             }) // https://github.com/d3/d3-selection#selection_data)
             .attr("fill", function (d) {
+                if (d.datavalue == undefined) {
+                    console.log("error");
+                } else {
+                    console.log(d.datavalue, d);
+                }
                 return colorRange(d.datavalue);
             });
 

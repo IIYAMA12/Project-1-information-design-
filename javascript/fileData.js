@@ -126,9 +126,16 @@ var allFileData = [
                 prepareData(fileData);
 
                 allData = allData.filter(function (d) {
-                    if (d.datavaluetype === "Percent") {
+                    // Add only the right data
+                    if (d.locationabbr !== "US") {
+
+                    } else {
+                        console.log(d.locationabbr);
+                    }
+                    if (d.datavaluetype === "Percent" && d.locationabbr !== "US") {
                         return true;
                     }
+
                 });
 
                 // add here your edit functions
