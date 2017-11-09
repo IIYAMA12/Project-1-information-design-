@@ -1,7 +1,7 @@
 var stories = [
     {
         id : "IQ",
-        title : "Fluoride verlaagt IQ van kinderen",
+        title : "Fluoride verlaagt IQ bij kinderen",
         secondaryTitle : "1 + 1 = ?",
         bodyText : "Uit onderzoek blijkt dat fluoride een negatief effect heeft op het IQ bij kinderen. Dit onderzoek is afgenomen door onderzoekers van de Harvard School of Public Health",
         url : "https://ehp.niehs.nih.gov/1104912/"
@@ -14,10 +14,11 @@ var stories = [
         url : "https://books.google.nl/books?id=cexLZLLIviYC&pg=PA35&lpg=PA35&dq=fluoride+kanker&source=bl&ots=wAhTO7Ksm9&sig=QCGF1dIdait02aiVO-OTdAEkOFE&hl=nl&ei=brRsTprCEcuZOs-61NYF&sa=X&oi=book_result&ct=result#v=onepage&q=fluoride%20kanker&f=false"
     },
     {
-        id : "IQ3",
-        title : "Fluoride verlaagt IQ",
-        secondaryTitle : "1 + 1 = ?",
-        bodyText : "bla bla bla bla"
+        id : "zwanger",
+        title : "Schadelijk voor ongeboren kind?",
+        secondaryTitle : "Ooievaar",
+        bodyText : "Ook al is fluoride giftig, er zijn gelukkig nog geen indicaties gevonden dat fluoride schadelijk is voor het ongeboren kind.",
+        url : "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3530971/"
     }
 ];
 
