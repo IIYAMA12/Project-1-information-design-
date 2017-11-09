@@ -1,14 +1,15 @@
-console.log("waterSupply.js started");
+
 
 var crankHanleParts = d3.selectAll(".crank-handle");
 var waterDropGroup = d3.select("#water-drop-group");
 var waterDropScaleGroup = waterDropGroup.select(".scale-group");
+var waterDropText = waterDropScaleGroup.select("text");
 
 crankHanleParts
     .on("click", function () {
         if (window.parent.getStoryAnimationStatus() === false) {
             window.parent.setStoryAnimationStatus(true);
-            console.log("clicked on crank parts");
+
 
             // prepare transitions for the drop
             var waterDropCreationTransition = d3.transition()
@@ -24,11 +25,25 @@ crankHanleParts
                 .ease(d3.easeLinear);
 
 
+
+            var secondaryTitle = "";
+
+
             var newStory = window.parent.getNewStory();
 
-            console.log("newStory", newStory);
+            if (newStory) {
+                secondaryTitle = newStory.secondaryTitle;
+
+            }
+
+            waterDropText.text(secondaryTitle);
+
+            window.parent.disableSubjectContent();
 
             setTimeout(function () {
+                if (newStory) {
+                    window.parent.setSubjectContent(newStory.title, newStory.bodyText);
+                }
                 window.parent.reActivateStorySelection();
             }, 4500);
 

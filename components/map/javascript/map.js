@@ -99,9 +99,8 @@ window.onload = function () {
     var stateLabel = mapHoverInformation
         .append("text")
             .attr("class", "state-name-label")
-            .attr("transform", "translate( 0, 80)")
+            .attr("transform", "translate( 0, 70)")
             .attr("dy", 10)
-            .attr("font-size", 20)
             .attr("fill", "black")
             .attr("text-anchor", "middle")
             .attr("opacity", 0)
@@ -111,11 +110,13 @@ window.onload = function () {
     stateLabel
         .append("tspan")
             .attr("class", "state")
+            .attr("font-size", 30)
     ;
 
     stateLabel
         .append("tspan")
             .attr("class", "population")
+            .attr("font-size", 20)
     ;
 
     stateLabel
@@ -322,7 +323,7 @@ window.onload = function () {
     function dataIsReadyForMap (fileData) {
 
         mapContainer.attr("class", ""); // remove the not-loaded class.
-        
+
         var allData = dataFunctions.filterFileData(fileData);
 
 

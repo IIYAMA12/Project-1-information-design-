@@ -2,17 +2,20 @@ var stories = [
     {
         id : "IQ",
         title : "Fluoride verlaagt IQ",
-        content : "bla bla bla bla"
+        secondaryTitle : "1 + 1 = ?",
+        bodyText : "bla bla bla bla"
     },
     {
         id : "IQ2",
         title : "Fluoride verlaagt IQ",
-        content : "bla bla bla bla"
+        secondaryTitle : "1 + 1 = ?",
+        bodyText : "bla bla bla bla"
     },
     {
         id : "IQ3",
         title : "Fluoride verlaagt IQ",
-        content : "bla bla bla bla"
+        secondaryTitle : "1 + 1 = ?",
+        bodyText : "bla bla bla bla"
     }
 ];
 
@@ -36,10 +39,8 @@ function setStoryAnimationStatus (status) {
 }
 
 function getNewStory () {
-    console.log("availableNewStories", availableNewStories);
     if (availableNewStories != undefined && availableNewStories.length > 0) {
         var storyIndex = Math.floor(Math.random() * availableNewStories.length);
-        console.log("storyIndex", storyIndex);
         var selectedStory = availableNewStories[storyIndex];
         availableNewStories.splice(storyIndex, 1);
 

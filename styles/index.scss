@@ -9,6 +9,7 @@ object.section-filled {
 .main-section {
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
 }
 
 
@@ -109,6 +110,11 @@ main {
             }
             position: relative;
             #information-about-subject {
+                transform: translate(0, 0);
+                transition: all 2s;
+                &.disabled-subject-info {
+                    transform: translate(120%, 0);
+                }
                 bottom: 2rem;
                 right: 2rem;
                 position: absolute;

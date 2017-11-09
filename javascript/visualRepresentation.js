@@ -1,6 +1,6 @@
-function createStory (storyId) {
-    
-}
+// ----------------------//
+// first section content //
+
 
 function createFilters (fileData) {
     var footer = d3.select("#first-content-section > footer");
@@ -90,16 +90,13 @@ function applyFilter () {
     // get the data from the input element
     var filterDataString = this.value;
     if (filterDataString != undefined) {
-        console.log("filterDataString");
         // make the data readable
         var filterDataArray = filterDataString.split("-|-");
         if (filterDataArray != undefined && filterDataArray.length === 2) {
             var filterId = Number(filterDataArray[0]);
             var data = Number(filterDataArray[1]);
-            console.log("filterDataArray");
             // validate
             if (filterId != undefined && data != undefined && data != "") {
-                console.log("validate");
                 // try to access the data with the given information.
                 var fileData = getDataOfFileById("fluorideWater");
                 if (fileData) {
@@ -115,12 +112,40 @@ function applyFilter () {
 
                             // reload/update the graph
                             callDataRequestersBack (fileData);
-
-                            console.log("please update the data here");
                         }
                     }
                 }
             }
         }
     }
+}
+
+// -----------------------//
+// second section content //
+
+function setSubjectContent (title, bodyText) {
+    var informationAboutSubject = d3.select("#information-about-subject");
+
+
+
+    if (!informationAboutSubject.empty()) {
+        informationAboutSubject
+            .attr("class", ""); // removed class disabled-subject-info
+        informationAboutSubject.select("h3")
+            .text(title ? title : "");
+
+        informationAboutSubject.select("p")
+            .text(bodyText ? bodyText : "");
+        return true;
+    }
+    return false;
+}
+
+function disableSubjectContent () {
+    var informationAboutSubject = d3.select("#information-about-subject");
+    if (!informationAboutSubject.empty()) {
+        informationAboutSubject
+            .attr("class", "disabled-subject-info"); // add class
+    }
+    return true;
 }

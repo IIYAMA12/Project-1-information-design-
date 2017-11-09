@@ -5,6 +5,7 @@ object.section-filled {
 .main-section {
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
 }
 
 .air-background {
@@ -108,6 +109,8 @@ main > section #second-content-section > object {
 }
 
 main > section #second-content-section #information-about-subject {
+    transform: translate(0, 0);
+    transition: all 2s;
     bottom: 2rem;
     right: 2rem;
     position: absolute;
@@ -115,6 +118,10 @@ main > section #second-content-section #information-about-subject {
     border-radius: 2rem;
     height: 15em;
     width: 20em;
+}
+
+main > section #second-content-section #information-about-subject.disabled-subject-info {
+    transform: translate(120%, 0);
 }
 
 main > section #second-content-section #information-about-subject > img {
