@@ -27,3 +27,9 @@ body {
 svg {
     max-height: 61vh;
 }
+
+
+// render the map white, while loading the content
+#map-container.not-loaded path {
+    fill: white;
+}

@@ -9,6 +9,8 @@ window.onload = function () {
     var mapGroup = d3.select("#map-group");
     var mapContainer = mapGroup.select("#map-container");
 
+
+
     // colors
     var firstColor = d3.color("#0080ff");
     var secondColor = d3.color('#55d911');
@@ -318,6 +320,9 @@ window.onload = function () {
     ;
 
     function dataIsReadyForMap (fileData) {
+
+        mapContainer.attr("class", ""); // remove the not-loaded class.
+        
         var allData = dataFunctions.filterFileData(fileData);
 
 

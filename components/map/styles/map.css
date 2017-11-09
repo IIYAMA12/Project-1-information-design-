@@ -18,3 +18,7 @@ body {
 svg {
     max-height: 61vh;
 }
+
+#map-container.not-loaded path {
+    fill: white;
+}
