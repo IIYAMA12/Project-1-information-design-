@@ -42,7 +42,7 @@ crankHanleParts
 
             setTimeout(function () {
                 if (newStory) {
-                    window.parent.setSubjectContent(newStory.title, newStory.bodyText);
+                    window.parent.setSubjectContent(newStory.title, newStory.bodyText, newStory.url);
                 }
                 window.parent.reActivateStorySelection();
             }, 4500);

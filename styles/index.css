@@ -116,8 +116,8 @@ main > section #second-content-section #information-about-subject {
     position: absolute;
     background-color: white;
     border-radius: 2rem;
-    height: 15em;
-    width: 20em;
+    height: 17em;
+    width: 30em;
 }
 
 main > section #second-content-section #information-about-subject.disabled-subject-info {
@@ -135,6 +135,7 @@ main > section #second-content-section #information-about-subject > h3 {
     text-align: center;
 }
 
-main > section #second-content-section #information-about-subject > p {
+main > section #second-content-section #information-about-subject > p, main > section #second-content-section #information-about-subject > a {
     padding: 0 2rem 1rem 2rem;
+    line-height: 1.2em;
 }

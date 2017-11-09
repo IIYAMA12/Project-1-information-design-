@@ -123,10 +123,8 @@ function applyFilter () {
 // -----------------------//
 // second section content //
 
-function setSubjectContent (title, bodyText) {
+function setSubjectContent (title, bodyText, url) {
     var informationAboutSubject = d3.select("#information-about-subject");
-
-
 
     if (!informationAboutSubject.empty()) {
         informationAboutSubject
@@ -136,6 +134,10 @@ function setSubjectContent (title, bodyText) {
 
         informationAboutSubject.select("p")
             .text(bodyText ? bodyText : "");
+
+        informationAboutSubject.select("a")
+            .attr("href", url ? url : "#");
+
         return true;
     }
     return false;
