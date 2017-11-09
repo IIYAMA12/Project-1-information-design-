@@ -1,24 +1,52 @@
-.cls-1, .cls-3, .cls-4 {
-  fill: none;
+.cls-1,
+.cls-2,
+.cls-4 {
+    fill: none;
+}
+
+.cls-1,
+.cls-2 {
+    stroke: #fff;
+    stroke-miterlimit: 10;
+}
+
+.cls-1 {
+    stroke-width: 45px;
 }
 
 .cls-2 {
-  clip-path: url(#clip-path);
+    stroke-width: 25px;
 }
 
-.cls-3, .cls-4 {
-  stroke: #fff;
-  stroke-miterlimit: 10;
+.crank-handle {
+    fill: black;
 }
 
-.cls-3 {
-  stroke-width: 45px;
+
+#water-drop-group {
+    transform: translate(238.83px, 710px);
+    .scale-group {
+        transform-origin: left top; // center does NOT WORk on firefox!
+    }
 }
 
-.cls-4 {
-  stroke-width: 25px;
+#water-drop{
+    fill: #55d911;
 }
 
-.cls-5 {
-  fill: #fff;
+#water-drop-text {
+    fill: #fff;
+    text-anchor: middle;
+    font-size: 2em;
+    font-family: 'dinbold';
+    font-weight: 700;
+}
+
+html, body {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.crank-handle {
+    cursor: pointer;
 }

@@ -1,5 +1,8 @@
 // wait for the website to load, then start loading the files.
 window.onload = function () {
+
+    makeCopyOfStories();
+
     setTimeout(function () {
         // use a timer to load to files (which helps older browsers to not process too much in one time)
         var index = 0;

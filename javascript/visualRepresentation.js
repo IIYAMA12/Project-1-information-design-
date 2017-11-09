@@ -1,3 +1,7 @@
+function createStory (storyId) {
+    
+}
+
 function createFilters (fileData) {
     var footer = d3.select("#first-content-section > footer");
     if (footer != undefined) {

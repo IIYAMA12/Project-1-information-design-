@@ -59,6 +59,16 @@ var allFileData = [
                 },
                 doNotAddToFilterSelection : true
             },
+            {
+                id : "population",
+                filterOn : "datavaluetype", // column
+                friendlyName : "Population", // title name
+                filterFunction : function (d) { // how do you want to filter it?
+                    return d[this.filterOn] === "Population"; // default
+                },
+                doNotAddToFilterSelection : true,
+                filterOnlyOnRequest : true
+            },
         ],
 
         timeParseFormats : {

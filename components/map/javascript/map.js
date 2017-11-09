@@ -18,13 +18,14 @@ window.onload = function () {
     var mapHoverInformation = mapGroup
         .append("g")
             .attr("id", "map-hover-info")
+            // .attr("class", "hidden")
     ;
 
     mapHoverInformation
         .append("circle")
             .attr("cx", "0")
             .attr("cy", "0")
-            .attr("r", "150")
+            .attr("r", "0")
             .attr("fill", "#ffffff")
     ;
 
@@ -39,10 +40,10 @@ window.onload = function () {
         // })
     //;
 
-    var pieRadius = 100;
+    var pieRadius = 0;
 
     var calculatedPath = d3.arc() // lets create our calculated paths. (this is not an html element!)
-        .outerRadius(pieRadius - 10)
+        .outerRadius(pieRadius)
         .innerRadius(0)
     ;
 
@@ -58,6 +59,7 @@ window.onload = function () {
 
     arcWithEnter
         .append("path")
+            .attr("opacity", 0)
             .attr("stroke", "white")
             .attr("stroke-width", 1)
             .attr("d", 0)
@@ -70,24 +72,59 @@ window.onload = function () {
     ;
 
 
-    // prapare label
+    // prapare label of precents
     var labelPosition = d3.arc()
-        .outerRadius(pieRadius + 100)
-        .innerRadius(pieRadius + 100);
+        .outerRadius(pieRadius)
+        .innerRadius(pieRadius);
 
     arcWithEnter
         .append("text")
+            .attr("class", "precents-label")
             .attr("transform", function(d) { return "translate(" + labelPosition.centroid(d) + ")"; })
-            .attr("dy", "1em")
+            .attr("dy", 10)
             .attr("font-size", 20)
             .attr("fill", "black")
+            .attr("text-anchor", "middle")
+            .attr("opacity", 0)
             .text("");
-
-
 
 
     // https://github.com/d3/d3-shape/blob/master/README.md#arc
     // https://en.wikipedia.org/wiki/Arc_(geometry)
+
+
+    // prepare name label
+    var stateLabel = mapHoverInformation
+        .append("text")
+            .attr("class", "state-name-label")
+            .attr("transform", "translate( 0, 80)")
+            .attr("dy", 10)
+            .attr("font-size", 20)
+            .attr("fill", "black")
+            .attr("text-anchor", "middle")
+            .attr("opacity", 0)
+            // .text("")
+    ;
+
+    stateLabel
+        .append("tspan")
+            .attr("class", "state")
+    ;
+
+    stateLabel
+        .append("tspan")
+            .attr("class", "population")
+    ;
+
+    stateLabel
+        .selectAll("tspan")
+            .attr("x", 0)
+            .attr("dy", "1.4em")
+    ;
+
+    // Add linebreak in svg text element: https://stackoverflow.com/questions/16701522/how-to-linebreak-an-svg-text-within-javascript
+
+
 
 
     // all map elements = states of US
@@ -105,7 +142,11 @@ window.onload = function () {
             var fileData = dataFunctions.getDataOfFileById("fluorideWater");
             if (fileData != undefined) {
                 var allData = dataFunctions.filterFileData(fileData);
-                if (allData != undefined) {
+
+
+                if (allData != undefined && allData) {
+
+                    var allPopulationData = dataFunctions.filterFileData(fileData, ["population", "year"]);
 
 
                     var transitionCircleDiagram = d3.transition().duration(400).ease(d3.easeLinear);
@@ -122,6 +163,18 @@ window.onload = function () {
                             break;
                         }
                     }
+
+                    var targetPopulationData = null;
+                    if (allPopulationData != undefined && allPopulationData) {
+                        for (var i = 0; i < allPopulationData.length; i++) {
+                            if (allPopulationData[i].locationabbr === elementId) {
+                                targetPopulationData = allPopulationData[i];
+                                break;
+                            }
+                        }
+                    }
+
+
 
                     if (targetData) {
 
@@ -154,6 +207,22 @@ window.onload = function () {
                                 .attr("r", circleSize / 2)
                         ;
 
+                        var stateLabel = mapHoverInformation
+                            .select(".state-name-label")
+                                .transition(transitionCircleDiagram)
+                                    .attr("opacity", 1)
+                        ;
+
+                        stateLabel
+                            .select("tspan.state")
+                                .text(targetData.locationdesc ? targetData.locationdesc : "")
+                        ;
+
+                        stateLabel
+                            .select("tspan.population")
+                                .text("Populatie: " + (targetPopulationData ? targetPopulationData.datavalue : "Niet bekend"))
+                        ;
+
                         var calculatedPath = d3.arc() // lets create our calculated paths. (this is not an html element!)
                             .outerRadius(circleSize / 2 * 0.8)
                             .innerRadius(circleSize / 2 * 0.2)
@@ -183,18 +252,19 @@ window.onload = function () {
                                 )
                         ;
 
-                        arc.select("text")
+
+                        arc.select(".precents-label")
                             .attr("transform", function(d) {
                                 var textPosition = labelPosition.centroid(d);
-                                textPosition[1] -= 10; // push the text 10 down = up on screen
+                                // textPosition[1] -= 10; // push the text 10 down = up on screen
                                 return "translate(" + textPosition + ")";
                             })
-                            .attr("text-anchor", "middle")
-                            .text(function(d) {
-                                return Math.floor(d.data + 0.5) + "%"; // Math.floor + 0.5 = same as Math.round
-                            })
-                            .transition(transitionCircleDiagram)
-                                .attr("opacity", 1)
+
+                                .text(function(d) {
+                                    return Math.floor(d.data + 0.5) + "%"; // Math.floor + 0.5 = same as Math.round
+                                })
+                                .transition(transitionCircleDiagram)
+                                    .attr("opacity", 1)
                         ;
 
                     }
@@ -234,11 +304,15 @@ window.onload = function () {
                     .attr("opacity", 0)
             ;
 
-            arc.select("text")
+            arc.select(".precents-label")
                 .transition(transitionCircleDiagram)
                     .attr("opacity", 0)
             ;
-
+            mapHoverInformation
+                .select(".state-name-label")
+                    .transition(transitionCircleDiagram)
+                        .attr("opacity", 0)
+            ;
         })
 
     ;
@@ -247,7 +321,7 @@ window.onload = function () {
         var allData = dataFunctions.filterFileData(fileData);
 
 
-
+        var colorTransition = d3.transition().duration(400).ease(d3.easeLinear);
 
         // get the color properties.
         // https://github.com/d3/d3-color/blob/master/README.md#color
@@ -258,6 +332,7 @@ window.onload = function () {
         var colorRangeB = d3.scaleLinear().domain([0, 100]).range([firstColor.b, secondColor.b]);
 
         var colorRange = function (index) {
+
             return d3.rgb(0, colorRangeG(index), colorRangeB(index));
         };
 
@@ -275,9 +350,11 @@ window.onload = function () {
                 // }
                 // return false;
             }) // https://github.com/d3/d3-selection#selection_data)
-            .attr("fill", function (d) {
-                return colorRange(d.datavalue);
-            });
+            .transition(colorTransition)
+                .attr("fill", function (d) {
+                    return colorRange(d.datavalue);
+                })
+        ;
 
         // mapContainer
         //     .selectAll("path")
