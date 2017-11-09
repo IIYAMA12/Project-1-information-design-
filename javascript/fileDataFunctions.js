@@ -305,7 +305,9 @@ function setCallBackWhenDataIsReadyForId (id, callBackFunction) {
 function callDataRequestersBack (fileData) {
     // Add the ref to the html, to load this data.
     var dataRequesters = fileData.dataRequesters;
-    for (var i = 0; i < dataRequesters.length; i++) {
-        dataRequesters[i](fileData);
+    if (dataRequesters != undefined && dataRequesters) {
+        for (var i = 0; i < dataRequesters.length; i++) {
+            dataRequesters[i](fileData);
+        }
     }
 }

@@ -55,6 +55,14 @@ main > section #first-content-section footer {
     right: 0;
 }
 
+main > section #first-content-section footer form {
+    margin-bottom: 0.5em;
+}
+
+main > section #first-content-section footer form legend {
+    margin-bottom: 0.5em;
+}
+
 main > section #first-content-section footer form fieldset {
     display: flex;
     flex-wrap: wrap;

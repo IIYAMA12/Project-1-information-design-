@@ -165,10 +165,6 @@ function setWaterTowerContent (value1, value2) {
 
 
 
-            console.log("strange");
-
-
-            console.log("add text", groups.data());
 
             var fluorideSkullTransition = d3.transition()
                     .duration(400)
@@ -227,9 +223,9 @@ function dataIsReadyForWaterTower (fileData) {
     var percentPerYear = fileData.customData.percentPerYear;
     // var = Object.keys(percentPerYear)[0];
     var defaultKey = fileData.filterData[0].defaultValue;
-    // console.log(defaultKey);
+
     var value = percentPerYear[defaultKey];
-    // console.log(value);
+
     setWaterTowerContent (value, 100 - value);
 }
 

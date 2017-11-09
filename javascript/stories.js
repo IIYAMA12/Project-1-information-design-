@@ -27,8 +27,7 @@ var usedStories = [];
 var availableNewStories; //= [];
 
 function makeCopyOfStories () {
-    console.log("makeCopyOfStories");
-    availableNewStories =  deepClone(stories);
+    availableNewStories = deepClone(stories);
 }
 
 var storyAnimationStatus = false;
@@ -44,7 +43,7 @@ function setStoryAnimationStatus (status) {
 function getNewStory () {
     if (availableNewStories != undefined) {
         if (availableNewStories.length == 0) {
-            availableNewStories = deepClone(stories);
+            makeCopyOfStories ();
         }
         if (availableNewStories.length > 0) {
             var storyIndex = Math.floor(Math.random() * availableNewStories.length);

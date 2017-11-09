@@ -3,22 +3,53 @@
     stroke-width: 0.75px;
 }
 
-#map-hover-info {
-    pointer-events: none;
-}
-
 body {
     padding: 15vw 15vw 15vw 0;
 }
 
-* {
-    overflow: hidden;
-}
-
-svg {
+body svg {
     max-height: 61vh;
 }
 
-#map-container.not-loaded path {
+body svg #legend-gradient .stop1 {
+    stop-color: #55d911;
+}
+
+body svg #legend-gradient .stop2 {
+    stop-color: #0080ff;
+}
+
+body svg #legend text {
+    fill: black;
+    font-size: 1.4em;
+    text-anchor: middle;
+}
+
+body svg #legend > g > rect:nth-child(1) {
+    fill: #55d911;
+}
+
+body svg #legend > g > rect:nth-child(2) {
+    fill: #55d911;
+    fill: url(#legend-gradient);
+}
+
+body svg #legend > g > rect:nth-child(3) {
+    fill: #0080ff;
+}
+
+body svg #legend > rect {
     fill: white;
+}
+
+body svg #map-container.not-loaded path {
+    fill: white;
+}
+
+body svg #map-hover-info {
+    pointer-events: none;
+}
+
+* {
+    overflow: hidden;
 }

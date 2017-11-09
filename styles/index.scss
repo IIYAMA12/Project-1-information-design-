@@ -58,6 +58,10 @@ main {
                 bottom: 0;
                 right: 0;
                 form {
+                    margin-bottom: 0.5em;
+                    legend {
+                        margin-bottom: 0.5em;
+                    }
                     fieldset {
                         display: flex;
                         flex-wrap: wrap;
