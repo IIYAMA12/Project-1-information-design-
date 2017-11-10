@@ -12,7 +12,7 @@ De naam zegt het al, het is fluoride(wat ook in je tandpasta zit) + water. In Am
 ## Onderdelen
 
 ### Fluoride voorziening op de kaart (Amerika)
-In het eerste onderdeel wordt op een kaart weergegeven hoeveel procent van de populatie fluoride water binnen krijgt. Als je met je cursor over een staat gaat, wordt daar er extra informatie weergegeven. Aan de rechterkant(niet op de preview) er keuze uit verschillende jaartallen. De cijfers veranderen dynamisch mee met het jaartal. Naast de kaart is een watertoren weergegeven. Deze geeft aan hoeveel procent van de Amerika fluoride water binnen krijgt.
+In het eerste onderdeel wordt op een kaart weergegeven hoeveel procent van de Amerikaanse populatie(per staat) fluoride water binnen krijgt. Als je met je cursor over een staat gaat, wordt daar op extra informatie weergegeven. Aan de rechterkant(niet op de preview) is er keuze uit verschillende jaartallen. De cijfers veranderen dynamisch mee met het jaartal. Naast de kaart is een watertoren weergegeven. Deze geeft aan hoeveel procent van de gehele Amerikaanse populatie fluoride water binnen krijgt.
 ![Fluoride voorziening op de kaart](preview1.png)
 
 ### Weetjes over fluoride
@@ -29,7 +29,6 @@ Als laatste mag jij als gebruiker lekker de staten van Amerika gaan poetsen, om 
 
 
 ## Over de code
-
 
 
 ---
