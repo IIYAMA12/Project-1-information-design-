@@ -157,7 +157,7 @@ processes : {
 
 ---
 
-## Licent
+## licentie
 
 * CDC. (2017, 25 oktober). Water Fluoridation Statistics - Percent of PWS population receiving fluoridated water [Dataset]. Geraadpleegd van https://chronicdata.cdc.gov/Oral-Health/Water-Fluoridation-Statistics-Percent-of-PWS-popul/8235-5d73
 
