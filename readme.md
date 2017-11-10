@@ -30,6 +30,10 @@ Als laatste mag jij als gebruiker lekker de staten van Amerika gaan poetsen, om 
 
 ## Over de code
 
+In deze opdracht ben ik begonnen met het leren werken met objecten. Deze keuze heb ik gemaakt omdat als je svg vanuit illustrator exporteerd het een rommel is. De svg files heb ik in apparte html files geplaatst, opgeschoond voor gebruik en html / css / javascript gescheiden.
+``` html
+<object id="toothbrush" type="text/html" data="./components/"></object>
+```
 
 ---
 
