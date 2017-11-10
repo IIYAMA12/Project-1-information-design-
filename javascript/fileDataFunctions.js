@@ -282,14 +282,14 @@ function getDataOfFileById (id) {
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------
 
-
+// used to deliver internal functions to different html objecten
 function getDataFunctions (id, callBackFunction) {
     return {getAllFileData : getAllFileData, getDataOfFile : getDataOfFile, getDataOfFileById : getDataOfFileById, filterFileData : filterFileData};
 }
 
 
 
-
+// Onces called before the data has been loaded, it will call those functions back based on the data id. (included the data)
 function setCallBackWhenDataIsReadyForId (id, callBackFunction) {
     var fileData = getDataOfFileById (id);
     if (fileData) {
@@ -301,7 +301,7 @@ function setCallBackWhenDataIsReadyForId (id, callBackFunction) {
     return true;
 }
 
-
+// call the data requesters back.
 function callDataRequestersBack (fileData) {
     // Add the ref to the html, to load this data.
     var dataRequesters = fileData.dataRequesters;

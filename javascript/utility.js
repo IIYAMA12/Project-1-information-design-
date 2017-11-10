@@ -26,7 +26,7 @@ function removeAllSpecialCharacters (theString) {
     return theString.replace(/[^a-zA-Z ]/g, "");
 }
 
-
+// Might be usefull, might also not.
 function getObjectItemCount (theObject) {
     var count = 0;
     for (var prop in theObject) {

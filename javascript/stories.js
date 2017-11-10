@@ -24,12 +24,15 @@ var stories = [
 
 var usedStories = [];
 
+// It is a copy of the stories object and will be renewed onces it is empty.
 var availableNewStories; //= [];
 
+// renew stories
 function makeCopyOfStories () {
     availableNewStories = deepClone(stories);
 }
 
+// Is the moving animation active?
 var storyAnimationStatus = false;
 
 function getStoryAnimationStatus () {
@@ -40,6 +43,7 @@ function setStoryAnimationStatus (status) {
     storyAnimationStatus = status;
 }
 
+// Get a new story everytime.
 function getNewStory () {
     if (availableNewStories != undefined) {
         if (availableNewStories.length == 0) {
@@ -58,6 +62,7 @@ function getNewStory () {
     return false;
 }
 
+// make sure you can run the animation again.
 function reActivateStorySelection () {
     setStoryAnimationStatus (false);
 }

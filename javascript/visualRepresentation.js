@@ -1,7 +1,7 @@
 // ----------------------//
 // first section content //
 
-
+// create the year filter on the first section
 function createFilters (fileData) {
     var footer = d3.select("#first-content-section > footer");
     if (footer != undefined) {
@@ -10,14 +10,14 @@ function createFilters (fileData) {
         var filterData = fileData.filterData;
         if (filterData != undefined) {
 
-            // footer.append("h3")
-            //     .text("filters");
 
             for (var i = 0; i < filterData.length; i++) {
 
 
                 var filter = filterData[i];
                 var variants = filter.variantsFound;
+
+                // check if there are variants and if the filter can be added here.
                 if (variants != undefined && !filter.doNotAddToFilterSelection) {
 
                     var formElement = footer.append("form");
@@ -63,9 +63,6 @@ function createFilters (fileData) {
                                     return fileData.id + "-|-" + i + "-|-" + d;
                                 })
                                 .attr("type", "radio")
-                                // .attr("value", function(d) {
-                                //     return d;
-                                // })
                                 .text(function(d) {
                                     return d.getFullYear();
                                 });
@@ -84,7 +81,7 @@ function createFilters (fileData) {
     return false;
 }
 
-
+// Add the year filter of the first section.
 function applyFilter () {
 
     // get the data from the input element
@@ -123,6 +120,7 @@ function applyFilter () {
 // -----------------------//
 // second section content //
 
+// this function is used to set the story data in the element
 function setSubjectContent (title, bodyText, url) {
     var informationAboutSubject = d3.select("#information-about-subject");
 
@@ -143,6 +141,7 @@ function setSubjectContent (title, bodyText, url) {
     return false;
 }
 
+// hide the element that shows the story
 function disableSubjectContent () {
     var informationAboutSubject = d3.select("#information-about-subject");
     if (!informationAboutSubject.empty()) {
@@ -159,7 +158,10 @@ function disableSubjectContent () {
 var thirdContentSection = document.getElementById("third-content-section");
 var toothbrush = document.getElementById("toothbrush");
 
+
 setCallBackWhenDataIsReadyForId("gebitsgezondheid", function (fileData) {
+
+    // this block is used to detect the brushing and getting the data
     var list = d3.select(thirdContentSection).select("section").select("ul");
 
     var allData = fileData.allData;
@@ -190,6 +192,7 @@ setCallBackWhenDataIsReadyForId("gebitsgezondheid", function (fileData) {
 
     if (thirdContentSection && toothbrush) {
 
+        // detect if a user presses his mousebutton
         var keyIsPressed = false;
 
         document.addEventListener('mousedown', function(e) {
@@ -208,13 +211,17 @@ setCallBackWhenDataIsReadyForId("gebitsgezondheid", function (fileData) {
             // https://stackoverflow.com/questions/3234256/find-mouse-position-relative-to-element
 
             if (cursorPositionY > 0 && cursorPositionX > 0) {
+
+                // move the toothbrush
                 toothbrush.style.transform = "translate(" + cursorPositionX + "px, " + cursorPositionY + "px)";
+
+                // are we brushing?
                 if (keyIsPressed) {
                     var source = e.target;
                     if (source.tagName == "OBJECT") {
 
 
-
+                        // call the function cleaningTooth in the object
                         var doc = source.contentDocument;
                         var win = doc.defaultView || doc.parentWindow;
                         // https://stackoverflow.com/questions/16010204/get-reference-of-window-object-from-a-dom-element

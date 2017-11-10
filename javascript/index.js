@@ -13,7 +13,7 @@ window.onload = function () {
             var fileData = allFileData[index];
             index++;
 
-            // A usefull function that I found to check if the file exist. In Firefox using it, will result in this warning:
+            // A usefull function that I found to check if the file exist. If used in Firefox, it will return this warning:
             /*
                 Synchronous XMLHttpRequest op de hoofdthread wordt niet meer ondersteund vanwege de nadelige effecten op de eindgebruikerservaring. Zie http://xhr.spec.whatwg.org/ voor meer informatie
             */
