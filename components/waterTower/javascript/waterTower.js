@@ -40,8 +40,6 @@ axis.selectAll("text")
     .attr("fill", "white");
 
 
-// d3.select("#watertower-container")
-
 
 function setWaterTowerContent (value1, value2) {
     if (clipMask != undefined) {
@@ -131,6 +129,7 @@ function setWaterTowerContent (value1, value2) {
         groups.select("image")
             .remove();
 
+        // remove the percentages
         groups.select("text")
             .remove();
 
@@ -144,6 +143,7 @@ function setWaterTowerContent (value1, value2) {
             groups.select("image") // double remove skull, to prevent multiple skulls, while having interaction during an animation.
                 .remove();
 
+            // remove the percentages
             groups.select("text")
                 .remove();
 
@@ -156,6 +156,7 @@ function setWaterTowerContent (value1, value2) {
 
             var imageSize = 100;
 
+            // add percentages in the watertower
             groups
                 .append("text")
                     .attr("x", function (d, i, allElements) {
@@ -174,7 +175,7 @@ function setWaterTowerContent (value1, value2) {
                     })
             ;
 
-
+            // create the skull image
             firstGroup
                 .append("image")
                     .attr("height", imageSize)
@@ -198,12 +199,9 @@ function setWaterTowerContent (value1, value2) {
     }
 }
 
-
+// this function will be called when the data is ready for the watertower
 function dataIsReadyForWaterTower (fileData) {
-    // var allData = dataFunctions.filterFileData(fileData);
-    // var totalValue = d3.sum(allData, function (d) {
-    //     return d.datavalue;
-    // });
+
     var percentPerYear = fileData.customData.percentPerYear;
     // var = Object.keys(percentPerYear)[0];
     var defaultKey = fileData.filterData[0].defaultValue;

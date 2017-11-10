@@ -7,6 +7,7 @@ var waterDropText = waterDropScaleGroup.select("text");
 
 crankHanleParts
     .on("click", function () {
+        // check if the story animation is NOT running
         if (window.parent.getStoryAnimationStatus() === false) {
             window.parent.setStoryAnimationStatus(true);
 
@@ -31,19 +32,25 @@ crankHanleParts
 
             var newStory = window.parent.getNewStory();
 
-            if (newStory) {
-                secondaryTitle = newStory.secondaryTitle;
 
+            if (newStory) {
+                // is there a secondaryTitle for the drop?
+                secondaryTitle = newStory.secondaryTitle;
             }
 
+            // change the title in the drop
             waterDropText.text(secondaryTitle);
 
+            // remove the story data / make element invisible
             window.parent.disableSubjectContent();
 
             setTimeout(function () {
+
                 if (newStory) {
+                    // set the story data and make the element visible
                     window.parent.setSubjectContent(newStory.title, newStory.bodyText, newStory.url);
                 }
+                // reactivate the animation
                 window.parent.reActivateStorySelection();
             }, 4500);
 

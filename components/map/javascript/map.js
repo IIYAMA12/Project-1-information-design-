@@ -142,13 +142,16 @@ window.onload = function () {
     // hover over a state of the US
     mapElements
         .on("mouseover", function () {
+            // get the file data
             var fileData = dataFunctions.getDataOfFileById("fluorideWater");
             if (fileData != undefined) {
+                // filter the data with all filters (excluded exceptions)
                 var allData = dataFunctions.filterFileData(fileData);
 
 
                 if (allData != undefined && allData) {
 
+                    // use only the filters population and year
                     var allPopulationData = dataFunctions.filterFileData(fileData, ["population", "year"]);
 
 
@@ -287,6 +290,7 @@ window.onload = function () {
     mapElements
         .on("mouseout", function () {
             var transitionCircleDiagram = d3.transition().duration(400).ease(d3.easeLinear);
+
             mapHoverInformation
                 .select("circle")
                 .transition(transitionCircleDiagram)
@@ -301,7 +305,6 @@ window.onload = function () {
             ;
 
             arc.select("path")
-                // .attr("d", 0)
                 .transition(transitionCircleDiagram)
                     .attr("d", calculatedPath)
                     .attr("opacity", 0)
@@ -320,6 +323,7 @@ window.onload = function () {
 
     ;
 
+    // this function will be called when the data is ready for the map.
     function dataIsReadyForMap (fileData) {
 
         mapContainer.attr("class", ""); // remove the not-loaded class.
@@ -346,25 +350,13 @@ window.onload = function () {
 
         mapElements
             .data(allData, function(d, i) {
-                //console.log(d ? d.locationabbr : d3.select(this).attr("id"));
                 return d ? d.locationabbr : d3.select(this).attr("id");
-                // if (d) {
-                //     console.log(d.locationabbr, d3.select(this).attr("id"));
-                //
-                // } else {
-                //     console.log("d undefined at", this.id);
-                // }
-                // return false;
             }) // https://github.com/d3/d3-selection#selection_data)
             .transition(colorTransition)
                 .attr("fill", function (d) {
                     return colorRange(d.datavalue);
                 })
         ;
-
-        // mapContainer
-        //     .selectAll("path")
-        //         .attr("fill", "red");
     }
 
 

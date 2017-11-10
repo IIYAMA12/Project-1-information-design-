@@ -354,15 +354,16 @@ var allFileData = [
 
                 prepareData(fileData);
 
-
+                // nest data based on location
                 allData = d3.nest()
                     .key(function(d) { return d.locationdesc; })
                     .entries(allData);
 
-
+                // make sure you can access each object also with it's key. (this is saved in custom data)
                 var accessDataByKey = {};
 
                 for (var i = 0; i < allData.length; i++) {
+                    // calculate the median
                     var values = allData[i].values;
                     var medianValue = d3.median(values.map(function (d) {
                         return d.lowconfidenceinterval;
@@ -390,10 +391,7 @@ var allFileData = [
                 return allData;
             },
             prepareSecondaryGraphFunction : function (fileData, allData) {
-                /*fileData.secondaryGraph = {
-                    column : "tot_respondents",
-                    columnLabel : "team"
-                };*/
+
                 return allData;
             }
         },
