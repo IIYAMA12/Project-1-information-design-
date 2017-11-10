@@ -30,12 +30,16 @@ Als laatste mag jij als gebruiker lekker de staten van Amerika gaan poetsen, om 
 
 ## Over de code
 
-In deze opdracht ben ik begonnen met het leren werken met objecten. Deze keuze heb ik gemaakt omdat als je svg vanuit illustrator exporteerd het een rommel is. De svg files heb ik in apparte html files geplaatst, opgeschoond voor gebruik en html / css / javascript gescheiden.
+In deze opdracht ben ik begonnen met het leren werken met objecten. Deze keuze heb ik gemaakt omdat als je svg vanuit illustrator exporteerd het een rommel is. Het hoofdprobleem waar ik tegen aan liep is dat Illustrator dezelfde classes gebruikt per file. Een style range meegeven door middel van een object is niet te veel gevraagd, daarnaast is dit ook veel overzichtelijker. De svg files heb ik in apparte html files geplaatst, opgeschoond voor gebruik en html / css / javascript gescheiden.
 ``` html
 <object id="toothbrush" type="text/html" data="./components/"></object>
 ```
 
+
+> Puntjes op de tand zetten! 
+
 ---
+
 
 ## Instructies hoe er meer bestanden ingeladen kunnen worden. (Engels)
 
@@ -183,6 +187,7 @@ processes : {
 ```
 
 
+
 ---
 
 ## licentie
@@ -190,3 +195,5 @@ processes : {
 * CDC. (2017, 25 oktober). Water Fluoridation Statistics - Percent of PWS population receiving fluoridated water [Dataset]. Geraadpleegd van https://chronicdata.cdc.gov/Oral-Health/Water-Fluoridation-Statistics-Percent-of-PWS-popul/8235-5d73
 
 * CDC. (2017, 25 oktober). NOHSS Adult Indicators [Dataset]. Geraadpleegd van https://chronicdata.cdc.gov/Oral-Health/NOHSS-Adult-Indicators/jz6n-v26y
+
+
