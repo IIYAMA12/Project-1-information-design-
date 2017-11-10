@@ -173,8 +173,11 @@ setCallBackWhenDataIsReadyForId("gebitsgezondheid", function (fileData) {
                     .append("li")
     ;
 
+    var sections = listItems
+        .append("section")
+    ;
 
-    listItems
+    sections
         .append("object")
             .attr("type", "text/html")
             .attr("data", "./components/tooth/tooth.html")
@@ -183,7 +186,7 @@ setCallBackWhenDataIsReadyForId("gebitsgezondheid", function (fileData) {
             })
     ;
 
-    listItems
+    sections
         .append("h4")
             .text(function (d) {
                 return d.key;
