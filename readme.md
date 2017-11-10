@@ -1,5 +1,6 @@
 # Populatie voorzien van fluoride water & gebitsgezondheid in Amerika.
 
+Voor dat je verder leest, open het prototype in __Firefox__ en geef het een paar seconden de tijd om te laden.
 
 Vanuit het ontwerp hygiëne kwam ik op de twee onderwerpen 'gebitsgezondheid' en 'fluoride water' uit. Dus twee datasets. Voor beide heb ik een concept uitgewerkt en tot een interactieve website gemaakt. 
 
