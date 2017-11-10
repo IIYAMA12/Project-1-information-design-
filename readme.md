@@ -9,6 +9,31 @@ De naam zegt het al, het is fluoride(wat ook in je tandpasta zit) + water. In Am
 
 
 
+## Onderdelen
+
+### Fluoride voorziening op de kaart (Amerika)
+In het eerste onderdeel wordt op een kaart weergegeven hoeveel procent van de populatie fluoride water binnen krijgt. Als je met je cursor over een staat gaat, wordt daar er extra informatie weergegeven. Aan de rechterkant(niet op de preview) er keuze uit verschillende jaartallen. De cijfers veranderen dynamisch mee met het jaartal. Naast de kaart is een watertoren weergegeven. Deze geeft aan hoeveel procent van de Amerika fluoride water binnen krijgt.
+![Fluoride voorziening op de kaart](preview1.png)
+
+### Weetjes over fluoride
+In de instalatie zitten een X hoeveelheid 'weetjes' gestopt. Door op de kraanhendel te klikken zal de installatie een volgend 'weetje' tonen. Het concept hier achter is dat je eens grondig gaat kijken naar elk druppel dat uit de kraan komt.
+![Fluoride weetjes](preview2.png)
+
+### Gebitsgezondheid (Amerika)
+Als laatste mag jij als gebruiker lekker de staten van Amerika gaan poetsen, om zo de gemiddelde gebitsgezondheid te achterhalen. Poetsen van je tanden doe je namelijk niet in één seconden. De gebitsgezondheid is een getal van 0 t/m 100%. Hoe meer procent, hoe beter de gezondheid van het gebit is. 100% is niet normaal gezond.
+
+![Gebitsgezondheid](preview3.png)
+
+---
+
+
+
+## Over de code
+
+
+
+---
+
 ## Instructies hoe er meer bestanden ingeladen kunnen worden. (Engels)
 
 ### Set-up
