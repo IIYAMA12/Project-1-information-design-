@@ -1,11 +1,3 @@
-// setTimeout(function () {
-//     window.parent.testThis();
-// }, 1000);
-
-
-// bar height 919
-// y start 1107,81
-
 var dataFunctions;
 
 
@@ -23,14 +15,6 @@ var y = d3.scaleLinear().rangeRound([919, 0]);
 y.domain([0, 100]);
 
 
-// no title as svg, but in html
-// watertowerSVG.append("text")
-//     .attr("x", "284.02")
-//     .attr("y", "-100")
-//     .attr("fill", "white")
-//     .attr("text-anchor", "middle")
-//     .text("Populatie voorzien van fluoride water")
-// ;
 
 var axis = watertowerSVG.append("g")
     .attr("transform", "translate(" + 540 + "," + 188.80999999999995 + ")") // 540

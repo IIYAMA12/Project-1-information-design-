@@ -151,3 +151,83 @@ function disableSubjectContent () {
     }
     return true;
 }
+
+
+// -----------------------//
+// third section content //
+
+var thirdContentSection = document.getElementById("third-content-section");
+var toothbrush = document.getElementById("toothbrush");
+
+setCallBackWhenDataIsReadyForId("gebitsgezondheid", function (fileData) {
+    var list = d3.select(thirdContentSection).select("section").select("ul");
+
+    var allData = fileData.allData;
+
+    var listItems = list
+        .selectAll("li")
+            .data(allData)
+                .enter()
+                    .append("li")
+    ;
+
+
+    listItems
+        .append("object")
+            .attr("type", "text/html")
+            .attr("data", "./components/tooth/tooth.html")
+            .attr("id", function (d) {
+                return d.key;
+            })
+    ;
+
+    listItems
+        .append("h4")
+            .text(function (d) {
+                return d.key;
+            })
+        ;
+
+    if (thirdContentSection && toothbrush) {
+
+        var keyIsPressed = false;
+
+        document.addEventListener('mousedown', function(e) {
+            keyIsPressed = true;
+        });
+
+        document.addEventListener('mouseup', function(e) {
+            keyIsPressed = false;
+        });
+
+        thirdContentSection.addEventListener("mousemove", function (e) {
+            var cursorPositionX = e.clientX;
+
+
+            var cursorPositionY = e.clientY - thirdContentSection.getBoundingClientRect().top;
+            // https://stackoverflow.com/questions/3234256/find-mouse-position-relative-to-element
+
+            if (cursorPositionY > 0 && cursorPositionX > 0) {
+                toothbrush.style.transform = "translate(" + cursorPositionX + "px, " + cursorPositionY + "px)";
+                if (keyIsPressed) {
+                    var source = e.target;
+                    if (source.tagName == "OBJECT") {
+
+
+
+                        var doc = source.contentDocument;
+                        var win = doc.defaultView || doc.parentWindow;
+                        // https://stackoverflow.com/questions/16010204/get-reference-of-window-object-from-a-dom-element
+                        var selectedData = fileData.customData.accessDataByKey[source.id];
+                        if (selectedData != undefined) {
+                            if (selectedData.brushed == undefined) {
+                                selectedData.brushed = 0;
+                            }
+                            win.cleaningTooth(selectedData);
+                        }
+                    }
+                }
+            }
+        });
+    }
+});

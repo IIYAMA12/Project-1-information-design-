@@ -355,12 +355,24 @@ var allFileData = [
                 prepareData(fileData);
 
 
+                allData = d3.nest()
+                    .key(function(d) { return d.locationdesc; })
+                    .entries(allData);
 
 
+                var accessDataByKey = {};
 
+                for (var i = 0; i < allData.length; i++) {
+                    var values = allData[i].values;
+                    var medianValue = d3.median(values.map(function (d) {
+                        return d.lowconfidenceinterval;
+                    }));
 
+                    allData[i].average = medianValue;
+                    accessDataByKey[allData[i].key] = allData[i];
+                }
 
-
+                fileData.customData.accessDataByKey = accessDataByKey;
 
                 // http://bl.ocks.org/phoebebright/raw/3176159/
 
