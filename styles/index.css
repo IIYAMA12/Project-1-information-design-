@@ -20,8 +20,12 @@ main > section {
     position: relative;
 }
 
-main > section h2 {
-    padding: 1rem 0 1rem 1rem;
+main > section header {
+    padding: 1rem;
+}
+
+main > section header h2 {
+    padding-bottom: 1rem;
     color: white;
     font-size: 2.3em;
 }
@@ -167,15 +171,12 @@ main #third-content-section #toothbrush {
     width: 20rem;
 }
 
-main #third-content-section > p {
-    padding: 1rem 0 1rem 1rem;
-}
-
 main #third-content-section section ul {
     margin: 0;
     display: flex;
     flex-wrap: wrap;
     width: 100vw;
+    padding-bottom: 1em;
 }
 
 main #third-content-section section ul li {
