@@ -122,6 +122,7 @@ main > section #second-content-section #information-about-subject {
     bottom: 2rem;
     right: 2rem;
     position: absolute;
+    z-index: 10;
     background-color: white;
     border-radius: 2rem;
     height: 17em;
