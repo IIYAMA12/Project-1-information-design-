@@ -1,11 +1,10 @@
 # Populatie voorzien van fluoride water & gebitsgezondheid in Amerika.
 
 
-Vanuit het ontwerp hygiëne kwam ik op de twee onderwerpen 'gebitsgezondheid' en 'fluoride water' uit. Voor beide heb ik een concept uitgewerkt en tot een interactieve website gemaakt.
+Vanuit het ontwerp hygiëne kwam ik op de twee onderwerpen 'gebitsgezondheid' en 'fluoride water' uit. Dus twee datasets. Voor beide heb ik een concept uitgewerkt en tot een interactieve website gemaakt. 
 
 ## Fluoride water
-
-
+De naam zegt het al, het is fluoride(wat ook in je tandpasta zit) + water. In Amerika stoppen ze deze stof in je drinkwater. Wij Nederlanders deden dat ook van ongeveer 1960 tot 1970. We stopte met het toevoegen van fluoride aan het drinkwater toen we er achter kwamen dat het een giftige stof bleek te zijn. In de interactieve website komen ook nog een aantal weetjes aan bod (Aan de kaak).
 
 
 
