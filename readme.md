@@ -3,6 +3,9 @@
 
 Vanuit het ontwerp hygiëne kwam ik op de twee onderwerpen 'gebitsgezondheid' en 'fluoride water' uit. Voor beide heb ik een concept uitgewerkt en tot een interactieve website gemaakt.
 
+## Fluoride water
+
+
 
 
 
@@ -27,7 +30,7 @@ var pathStart = ""; // example: ./dataFiles/
 
 #### Step 3
 
-For writing down the file information scroll down to the variable 'allFileData'. This variable contains which files have to be loaded and most in important how that are loaded. Each file has it's own object. **(required)**
+For writing down the file information scroll down to the variable 'allFileData'. This variable indicates which files have to be loaded and most important how that are loaded. Each file needs it's own object. **(required)**
 
 ``` javascript 
 {
@@ -67,12 +70,10 @@ readAsType :  // "csv" / "tsv" / "text"  //
 ```
 ---
 
-#### Step 6
+#### ~~Step 6~~
 
-Define the graph you are going to use. Only the bar chart is supported. This function might change later. It might change to an array, for supporting multiple graphs. For now fill in as a string _"bar"_. **(required)**
-``` javascript 
-graphType : "bar",
-```
+~~Define the graph you are going to use. Only the bar chart is supported. This function might change later. It might change to an array, for supporting multiple graphs. For now fill in as a string _"bar"_. **(required)**~~
+
 ---
 
 #### Step 7
@@ -155,3 +156,9 @@ processes : {
 
 
 ---
+
+## Licent
+
+* CDC. (2017, 25 oktober). Water Fluoridation Statistics - Percent of PWS population receiving fluoridated water [Dataset]. Geraadpleegd van https://chronicdata.cdc.gov/Oral-Health/Water-Fluoridation-Statistics-Percent-of-PWS-popul/8235-5d73
+
+* CDC. (2017, 25 oktober). NOHSS Adult Indicators [Dataset]. Geraadpleegd van https://chronicdata.cdc.gov/Oral-Health/NOHSS-Adult-Indicators/jz6n-v26y
